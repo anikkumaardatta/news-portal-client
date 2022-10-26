@@ -7,7 +7,7 @@ const BrandCarousel = () => {
             <Carousel.Item>
                 <img
                 className="d-block w-100"
-                src="http://d1jnx9ba8s6j9r.cloudfront.net/blog/wp-content/uploads/2019/09/C-Program-to-Delete-or-Insert-An-Element-In-An-Array.jpg"
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFA04csraPwpUKh1qRBMBCSjDn6q2BmjP7-A&usqp=CAU"
                 alt="First slide"
                 />
             </Carousel.Item>
@@ -25,7 +25,7 @@ const BrandCarousel = () => {
                 alt="Third slide"
                 />
             </Carousel.Item>
-            </Carousel>
+        </Carousel>
     );
 };
 

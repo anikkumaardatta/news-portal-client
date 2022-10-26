@@ -1,4 +1,5 @@
-import React from 'react';
+import { GoogleAuthProvider } from 'firebase/auth';
+import React, { useContext } from 'react';
 import Button from 'react-bootstrap/Button';
 import {
     FaGoogle,
@@ -13,13 +14,27 @@ import {
     FaNewspaper
 
 } from "react-icons/fa";
+import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../../context/AuthProvider/AuthProvider';
 import BrandCarousel from '../BrandCarousel/BrandCarousel';
 
 const RightSIdeNav = () => {
+    const {providerLogin} = useContext(AuthContext);
+    const navigate = useNavigate();
+    const googleProvider = new GoogleAuthProvider()
+
+    const handleGoogleLogin = () =>{
+        providerLogin(googleProvider)
+        .then((result) => {
+            const user = result.user;
+            navigate('/')
+        })
+        .catch(err => console.log(err));
+    }
     return (
         <div>
             <div className="my-2 d-grid gap-2">
-                <Button variant="outline-primary" size="lg">
+                <Button onClick={handleGoogleLogin} variant="outline-primary" size="lg">
                     <FaGoogle></FaGoogle> Login with Google
                 </Button>
                 <Button variant="outline-dark" size="lg">
@@ -33,9 +48,6 @@ const RightSIdeNav = () => {
                 </Button>
                 <Button className='shadow-sm text-start' variant="light" size="lg">
                     <FaFacebook></FaFacebook> Facebook
-                </Button>
-                <Button className='shadow-sm text-start' variant="light" size="lg">
-                    <FaPinterest></FaPinterest> Pinterest
                 </Button>
                 <Button className='shadow-sm text-start' variant="light" size="lg">
                     <FaTwitter></FaTwitter> twitter
